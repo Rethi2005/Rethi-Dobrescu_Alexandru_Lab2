@@ -20,9 +20,16 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Book.Author)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Book.Author)
-        </dd>
+        <dd class="col-sm-10">
+    @if (Model.Book.Author != null)
+    {
+        @($"{Model.Book.Author.FirstName} {Model.Book.Author.LastName}")
+    }
+    else
+    {
+        <span>Fără autor atribuit</span>
+    }
+</dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Book.Price)
         </dt>
@@ -35,6 +42,15 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Book.PublishingDate)
         </dd>
+        <dt class="col-sm-2">
+    Categorii
+</dt>
+<dd class="col-sm-10">
+    @foreach (var item in Model.Book.BookCategories)
+    {
+        @item.Category.CategoryName <br />
+    }
+</dd>
     </dl>
 </div>
 <div>

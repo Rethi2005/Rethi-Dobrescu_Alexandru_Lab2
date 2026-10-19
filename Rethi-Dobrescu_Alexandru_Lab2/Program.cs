@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Rethi_Dobrescu_Alexandru_Lab2Context") ?? throw new InvalidOperationException("Connection string 'Rethi_Dobrescu_Alexandru_Lab2Context' not found.");
 
@@ -6,7 +8,10 @@ builder.Services.AddDbContext<Rethi_Dobrescu_Alexandru_Lab2Context>(options => o
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+var culture = new CultureInfo("ro-RO");
 
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
