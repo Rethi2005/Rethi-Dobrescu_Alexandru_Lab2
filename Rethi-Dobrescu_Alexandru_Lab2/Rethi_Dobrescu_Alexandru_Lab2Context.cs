@@ -7,4 +7,6 @@ public class Rethi_Dobrescu_Alexandru_Lab2Context(DbContextOptions<Rethi_Dobresc
     public DbSet<Publisher> Publisher { get; set; }
     public DbSet<Author> Author { get; set; }
     public DbSet<Category> Category { get; set; }
+    public DbSet<Member> Member { get; set; }
+    public DbSet<Borrowing> Borrowing { get; set; }
 }
