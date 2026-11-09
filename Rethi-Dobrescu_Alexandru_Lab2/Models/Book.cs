@@ -7,7 +7,9 @@ namespace Rethi_Dobrescu_Alexandru_Lab2.Models
     {
         public int ID { get; set; }
 
-
+        [Required(ErrorMessage = "Titlul cărții este obligatoriu.")]
+        [StringLength(150, MinimumLength = 3,
+    ErrorMessage = "Titlul trebuie să aibă între 3 și 150 de caractere.")]
         [Display(Name = "Titlu Carte")]
         public string Title { get; set; }
         [Display(Name = "Autor")]
@@ -16,6 +18,7 @@ namespace Rethi_Dobrescu_Alexandru_Lab2.Models
         public Author? Author { get; set; }
         [Display(Name = "Pret")]
         [Column(TypeName = "decimal(6, 2)")]
+        [Range(0.01, 500)]
         public decimal Price { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Data Publicarii")]

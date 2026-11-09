@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using Rethi_Dobrescu_Alexandru_Lab2.Models;
 
 namespace Rethi_Dobrescu_Alexandru_Lab2.Pages.BookPages;
 
+[Authorize(Roles = "Admin")]
 public class DeleteModel : PageModel
 {
     private readonly Rethi_Dobrescu_Alexandru_Lab2Context _context;

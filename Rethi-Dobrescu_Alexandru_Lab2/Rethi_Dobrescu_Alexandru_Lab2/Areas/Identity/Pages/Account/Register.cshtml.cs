@@ -101,14 +101,15 @@ public class RegisterModel : PageModel
         {
             _logger.LogInformation(
                 "User created a new account with password.");
+            
 
             Member.Email = Input.Email;
 
             _libraryContext.Member.Add(Member);
             await _libraryContext.SaveChangesAsync();
 
+            var role = await _userManager.AddToRoleAsync(user, "User");
             var userId = await _userManager.GetUserIdAsync(user);
-
             var code = await _userManager
                 .GenerateEmailConfirmationTokenAsync(user);
 
