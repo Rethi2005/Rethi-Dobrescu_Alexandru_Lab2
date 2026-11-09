@@ -84,8 +84,8 @@ public class RegisterModel : PageModel
         ExternalLogins = (await _signInManager
             .GetExternalAuthenticationSchemesAsync()).ToList();
 
-        if (!ModelState.IsValid)
-            return Page();
+        //if (!ModelState.IsValid)
+        //  return Page();
 
         var user = new ApplicationUser();
 
@@ -97,8 +97,8 @@ public class RegisterModel : PageModel
 
         var result = await _userManager.CreateAsync(user, Input.Password);
 
-        if (result.Succeeded)
-        {
+       //if (result.Succeeded)
+       // {
             _logger.LogInformation(
                 "User created a new account with password.");
             
@@ -144,7 +144,7 @@ public class RegisterModel : PageModel
                 user, isPersistent: false);
 
             return LocalRedirect(returnUrl);
-        }
+       // }
 
         foreach (var error in result.Errors)
         {
